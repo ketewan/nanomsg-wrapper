@@ -87,19 +87,19 @@ void Wrapper::recieveMessage() {
 	}
 
 	if (strcmp(cmd, "run") == 0 && p->state() == QProcess::NotRunning) {
-		startProcess();
+        startProcess();
 	}
 	else if (strcmp(cmd, "stop") == 0 && p->state() == QProcess::Running) {
 		stopProcess();
 	}
-	else if (p->state() == QProcess::Running) {
-		p->write(cmd);
-		p->write("\n");
-		p->waitForBytesWritten();
-	}
-	else {
-		qDebug() << "Process is not running. Send run command before any other";
-	}
+//    else if (p->state() == QProcess::Running) {
+//        p->write(cmd);
+//        p->write("\n");
+//        p->waitForBytesWritten();
+//    }
+//    else {
+//        qDebug() << "Process is not running. Send run command before any other";
+//    }
 	nn_freemsg(buf);
 
 	mNotifier->setEnabled(true);
